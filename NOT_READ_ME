@@ -1,7 +1,14 @@
-1. Install IntelliJ IDEA
-2. Install JAVA 8 JDK
-3. Install Maven
-4. Import JUnit
-5. Install Postgress
-6. Install PGAdmin
-7. Connect BD to IDEA
+LIME
+
+01. Install IntelliJ IDEA
+02. Install JAVA 8 JDK
+03. Install Maven
+04. Import JUnit
+05. Install Postgress
+06. Install PGAdmin
+07. Connect BD to IDEA
+08. Create BD:
+    - decomposition
+    - integrate db to project
+    - create test db
+09. Create UML diagram
