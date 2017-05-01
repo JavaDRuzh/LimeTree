@@ -90,23 +90,30 @@ public class ZoneWorker {
         }
     }
 
-    // select zone
-    public ArrayList<Zone> selectZone() {
+    // select all zone
+    public ArrayList<Zone> selectZone(String key, String string) {
 
         ArrayList<Zone> zones = new ArrayList<Zone>();
 
-        String SELECT_ZONE = "SELECT * FROM zone;";
+        String select = "";
+
+        if (key.equals("all")) select = "SELECT * FROM zone;";
+        if (key.equals("name")) select = "SELECT * FROM zone WHERE name_zone = '" + string + "';";
+        if (key.equals("city")) select = "SELECT * FROM zone WHERE city_zone = '" + string + "';";
+        if (key.equals("street")) select = "SELECT * FROM zone WHERE street_zone = '" + string + "';";
+
 
         try {
             DBWorker worker = new DBWorker();
             connection = worker.getConnection();
             statement = connection.createStatement();
-            resultSet = statement.executeQuery(SELECT_ZONE);
+            resultSet = statement.executeQuery(select);
 
-            while (resultSet.next()){
+
+            while (resultSet.next()) {
                 int i = 0;
                 Zone zone = new Zone();
-                zone.setIdZone(resultSet.getInt("id_zone") );
+                zone.setIdZone(resultSet.getInt("id_zone"));
                 zone.setNameZone(resultSet.getString("name_zone"));
                 zone.setCityZone(resultSet.getString("city_zone"));
                 zone.setStreetZone(resultSet.getString("street_zone"));
@@ -114,8 +121,7 @@ public class ZoneWorker {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             //close connection, statement
             try {
                 connection.close();
@@ -137,16 +143,21 @@ public class ZoneWorker {
     }
 
 
-    public void deleteZone(){
+    public void deleteZone(String key, String string) {
 
-        String DELETE_ZONE = "DELETE FROM zone;";
+        String select = "";
+
+        if (key.equals("all")) select = "DELETE FROM zone;";
+        if (key.equals("name")) select = "DELETE FROM zone WHERE name_zone = '" + string + "';";
+        if (key.equals("city")) select = "DELETE FROM zone WHERE city_zone = '" + string + "';";
+        if (key.equals("street")) select = "DELETE FROM zone WHERE street_zone = '" + string + "';";
 
         try {
             DBWorker worker = new DBWorker();
             connection = worker.getConnection();
             statement = connection.createStatement();
 
-            statement.addBatch(DELETE_ZONE);
+            statement.addBatch(select);
             statement.executeBatch();
 
         } catch (SQLException e) {

@@ -11,4 +11,6 @@ LIME
     - decomposition
     - integrate db to project
     - create test db
-09. Create UML diagram
+09. Create UML user diagram
+10. Create insert, select, update, delite metods for zone
+11. Create Technical documentation
