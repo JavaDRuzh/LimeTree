@@ -44,6 +44,14 @@
             <version>4.3.8.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.jtattoo/JTattoo -->
+        <dependency>
+            <groupId>com.jtattoo</groupId>
+            <artifactId>JTattoo</artifactId>
+            <version>1.6.7</version>
+        </dependency>
+
+
     </dependencies>
 
 
